@@ -1,4 +1,4 @@
-# Custom Gem
+# Game of Life
 
 ## Requirements
 
@@ -16,10 +16,10 @@ From the project root you may begin installation and use.
 
 ### Running the Project
 
-The `bin` directory contains a `custom_gem` script to run the project.
+The `bin` directory contains a `game_of_life` script to run the project.
 
 ```bash
-$ bin/custom_gem
+$ bin/game_of_life
 ```
 
 ## Running Tests

@@ -1,14 +1,14 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'custom_gem/version'
+require 'game_of_life/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'custom_gem'
-  spec.version       = CustomGem::VERSION
+  spec.name          = 'game_of_life'
+  spec.version       = GameOfLife::VERSION
   spec.authors       = ['Tyler Ferraro']
   spec.email         = ['tyler.ferraro@gmail.com']
-  spec.summary       = 'Custom Gem Template'
-  spec.description   = 'Custom Gem Template'
+  spec.summary       = 'Game of Life Simulator'
+  spec.description   = 'Game of Life Simulator'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.bindir        = 'bin'
-  spec.executables   = ['custom_gem']
+  spec.executables   = ['game_of_life']
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 2.0'
