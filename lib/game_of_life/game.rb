@@ -3,10 +3,11 @@ module GameOfLife
     attr_reader :board
 
     def initialize(data)
-      @data = data
+      @board = Board.new(data)
     end
 
     def tick
+      board.mutate!
     end
 
     def to_s

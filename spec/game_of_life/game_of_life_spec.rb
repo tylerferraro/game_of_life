@@ -34,7 +34,7 @@ RSpec.describe GameOfLife do
       game = GameOfLife::Game.new(data_a)
       game.tick
 
-      expect(game.board).to eq(mutation_a)
+      expect(game.board.to_a).to eq(mutation_a)
     end
 
     let!(:data_b) {
@@ -71,7 +71,7 @@ RSpec.describe GameOfLife do
       game = GameOfLife::Game.new(data_b)
       game.tick
 
-      expect(game.board).to eq(mutation_b)
+      expect(game.board.to_a).to eq(mutation_b)
     end
 
     let!(:data_c) {
@@ -108,7 +108,7 @@ RSpec.describe GameOfLife do
       game = GameOfLife::Game.new(data_c)
       game.tick
 
-      expect(game.board).to eq(mutation_c)
+      expect(game.board.to_a).to eq(mutation_c)
     end
   end
 end
