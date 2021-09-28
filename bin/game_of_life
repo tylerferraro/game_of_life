@@ -43,7 +43,7 @@ game = GameOfLife::Game.new(data)
 puts "=== Simulating Game ===\n\n"
 puts game
 
-20.times { game.tick }
+game.tick(20)
 
 puts "\nAfter 20 Generations:\n\n"
 puts game
