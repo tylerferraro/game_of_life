@@ -4,7 +4,7 @@ module GameOfLife
 
     attr_reader :age
 
-    def initialize(age)
+    def initialize(age = 0)
       @age = age
     end
 
@@ -14,6 +14,26 @@ module GameOfLife
 
       # return new mutated cell
       Cell.new(age)
+    end
+
+    def alive?
+      @age > 0
+    end
+
+    def dead?
+      @age == 0
+    end
+
+    def newborn?
+      @age == 1
+    end
+
+    def adult?
+      @age == 2
+    end
+
+    def senior?
+      @age == 3
     end
   end
 end
