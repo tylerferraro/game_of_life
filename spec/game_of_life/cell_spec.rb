@@ -21,6 +21,74 @@ RSpec.describe GameOfLife::Cell do
   end
 
   describe '#mutate' do
+    context 'dead cell' do
+      # Reproduction
+      it 'returns :newborn if exactly two neighbors and both are adults' do
+        neighbors = [adult, adult]
+
+        expect(dead.mutate(neighbors).age).to eq(1)
+      end
+
+      # Remains dead
+      it 'returns :dead if exactly two neighbors but both are not adults' do
+        neighbors = [adult, newborn]
+
+        expect(dead.mutate(neighbors).age).to eq(0)
+      end
+    end
+
+    context 'newborn cell' do
+      # Growth
+      it 'returns :adult if it has 2-4 alive neighbors' do
+        neighbors = [newborn, adult]
+
+        expect(newborn.mutate(neighbors).age).to eq(2)
+      end
+
+      # Isolation
+      it 'returns :dead if less than 2 alive neighbors' do
+        neighbors = [adult, dead]
+
+        expect(newborn.mutate(neighbors).age).to eq(0)
+      end
+
+      # Overcrowding
+      it 'returns :dead if more than 4 alive neighbors' do
+        neighbors = [newborn, adult, adult, senior, senior]
+
+        expect(newborn.mutate(neighbors).age).to eq(0)
+      end
+    end
+
+    context 'adult cell' do
+      # Growth
+      it 'returns :senior if it has 1-2 alive neighbors' do
+        neighbors = [newborn, senior]
+
+        expect(adult.mutate(neighbors).age).to eq(3)
+      end
+
+      # Isolation
+      it 'returns :dead if no alive neighbors' do
+        neighbors = [dead, dead]
+
+        expect(adult.mutate(neighbors).age).to eq(0)
+      end
+
+      # Overcrowding
+      it 'returns :dead if more than 2 alive neighbors' do
+        neighbors = [newborn, senior, senior]
+
+        expect(adult.mutate(neighbors).age).to eq(0)
+      end
+    end
+
+    context 'senior cell' do
+      # Dies of old age
+      it 'can always returns :dead' do
+        expect(senior.mutate.age).to eq(0)
+      end
+    end
   end
 
   describe '#alive?' do

@@ -8,12 +8,15 @@ module GameOfLife
       @age = age
     end
 
-    def mutate(neighbors)
-      # get alive neighbors
-      # compare against game logic
+    def mutate(neighbors = [])
+      alive_neighbors = neighbors.reject(&:dead?)
 
-      # return new mutated cell
-      Cell.new(age)
+      new_age = 1 if dead? && alive_neighbors.count { |neighbor| neighbor.adult? } == 2
+      new_age = 2 if newborn? && (2..4).include?(alive_neighbors.count)
+      new_age = 3 if adult? && (1..2).include?(alive_neighbors.count)
+      new_age ||= 0
+
+      Cell.new(new_age)
     end
 
     def alive?
